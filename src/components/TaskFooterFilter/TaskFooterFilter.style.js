@@ -14,8 +14,8 @@ export const TaskFooterFilterWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     bottom: -90px;
-    background: #fff;
-    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    background-color: ${({ theme }) => theme.colors.component};
+    box-shadow: ${({ theme }) => theme.colors.bsList};
     border-radius: 5px;
   }
 
