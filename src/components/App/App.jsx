@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import Header from "../Header/Header";
 import Input from "../Input/Input";
 import TaskList from "../TaskList/TaskList";
-import { AppWrapper, Container } from "./style";
+import { AppWrapper, Container } from "./App.style";
 
 export default function App() {
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useLocalStorage("tasks", [
     {
       task: "Complete online JavaScript course",
       isCompleted: true,

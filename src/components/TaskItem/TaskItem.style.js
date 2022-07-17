@@ -1,15 +1,6 @@
 import styled from "styled-components";
 
-export const TaskListWrapper = styled.ul`
-  width: 100%;
-  max-width: 540px;
-  height: auto;
-  background: #fff;
-  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
-  border-radius: 5px;
-`;
-
-export const LiWrapper = styled.li`
+export const TaskItemWrapper = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,6 +14,7 @@ export const LiWrapper = styled.li`
   padding: 20px 24px 19px 24px;
   box-sizing: border-box;
   border-bottom: 1px solid #e3e4f1;
+  transition: all 200ms ease-in-out;
 
   .content-li {
     display: flex;
@@ -45,12 +37,8 @@ export const LiWrapper = styled.li`
     border-radius: 50%;
     margin-right: 24px;
   }
-`;
 
-export const TaskFooter = styled.li`
-  display: flex;
-  justify-content: space-between;
-  color: #9495a5;
-  padding: 20px 24px 19px 24px;
-  box-sizing: border-box;
+  img {
+    cursor: pointer;
+  }
 `;

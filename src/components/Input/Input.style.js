@@ -26,6 +26,8 @@ export const InputWrapper = styled.div`
     }
 
     input {
+      width: 100%;
+      max-width: 414px;
       height: 24px;
       border: none;
       font-weight: 400;

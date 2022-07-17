@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderWrapper } from "./style";
+import { HeaderWrapper } from "./Header.style";
 import IconTheme from "../../assets/icon-moon.svg";
 
 export default function Header() {

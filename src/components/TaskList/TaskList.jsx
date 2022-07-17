@@ -1,15 +1,11 @@
-import React from "react";
-import { LiWrapper, TaskListWrapper, TaskFooter } from "./style";
-import IconCheck from "../../assets/icon-check.svg";
-import IconDelete from "../../assets/icon-cross.svg";
+import React, { useState } from "react";
+import { TaskListWrapper } from "./TaskList.style";
+
+import TaskListFooter from "../TaskFooter/TaskFooter";
+import TaskItem from "../TaskItem/TaskItem";
 
 export default function TaskList({ tasks, setTasks }) {
-  const uncompletedTask = tasks.filter((item) => !item.isCompleted);
-  const completedTask = tasks.filter((item) => item.isCompleted);
-
-  const handleDeleteComplete = (id) => {
-    setTasks(uncompletedTask.filter((item) => item.id !== id));
-  };
+  const [filter, setFilter] = useState("all");
 
   const handleDelete = (id) => {
     setTasks(tasks.filter((item) => item.id !== id));
@@ -26,37 +22,43 @@ export default function TaskList({ tasks, setTasks }) {
     );
   };
 
+  let filtred = [...tasks];
+
+  switch (filter) {
+    case "all":
+      filtred = [...tasks];
+      break;
+    case "completed":
+      filtred = tasks.filter((task) => task.isCompleted);
+      break;
+    case "uncompleted":
+      filtred = tasks.filter((task) => !task.isCompleted);
+      break;
+    default:
+      filtred = [...tasks];
+      break;
+  }
+
   return (
     <TaskListWrapper>
-      {tasks.map(({ task, isCompleted, id }) => (
+      {filtred.map(({ task, isCompleted, id }) => (
         <>
-          <LiWrapper isCompleted={isCompleted} key={id}>
-            <div className="content-li">
-              <div className="completed" onClick={() => handleCompleted(id)}>
-                {isCompleted ? <img src={IconCheck} alt="icon-check" /> : null}
-              </div>
-              <span>{task}</span>
-            </div>
-            <img
-              onClick={() => handleDelete(id)}
-              src={IconDelete}
-              alt="icon-delete"
-            />
-          </LiWrapper>
+          <TaskItem
+            task={task}
+            isCompleted={isCompleted}
+            id={id}
+            handleCompleted={handleCompleted}
+            handleDelete={handleDelete}
+          />
         </>
       ))}
-      <TaskFooter>
-        <span className="task-counter">
-          {uncompletedTask.length} items left
-        </span>
-        <div className="task-filter"></div>
-        <span
-          className="task-clear"
-          onClick={() => handleDeleteComplete(tasks.id)}
-        >
-          Clear Completed
-        </span>
-      </TaskFooter>
+      <TaskListFooter
+        tasks={tasks}
+        filtred={filtred}
+        setTasks={setTasks}
+        filter={filter}
+        setFilter={setFilter}
+      />
     </TaskListWrapper>
   );
 }
