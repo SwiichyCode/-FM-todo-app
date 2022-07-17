@@ -1,8 +1,9 @@
 import React from "react";
-import { TaskItemWrapper } from "./TaskItem.style";
+import { MdClose } from "react-icons/md";
+import { IconContext } from "react-icons";
 
+import { TaskItemWrapper } from "./TaskItem.style";
 import IconCheck from "../../assets/icon-check.svg";
-import IconDelete from "../../assets/icon-cross.svg";
 
 export default function TaskItem({
   task,
@@ -26,11 +27,9 @@ export default function TaskItem({
         </div>
         <span>{task}</span>
       </div>
-      <img
-        onClick={() => handleDelete(id)}
-        src={IconDelete}
-        alt="icon-delete"
-      />
+      <IconContext.Provider value={{ size: "1.6em", className: "close" }}>
+        <MdClose onClick={() => handleDelete(id)} />
+      </IconContext.Provider>
     </TaskItemWrapper>
   );
 }

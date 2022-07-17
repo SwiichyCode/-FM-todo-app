@@ -1,13 +1,26 @@
 import React from "react";
 import { HeaderWrapper } from "./Header.style";
 
-import IconTheme from "../../assets/icon-moon.svg";
+import IconMoon from "../../assets/icon-moon.svg";
+import IconSun from "../../assets/icon-sun.svg";
 
-export default function Header() {
+export default function Header({ currentTheme, setCurrentTheme }) {
+  const handleTheme = () => {
+    if (currentTheme === "light") {
+      setCurrentTheme("dark");
+    } else {
+      setCurrentTheme("light");
+    }
+  };
+
   return (
     <HeaderWrapper>
       <h1>todo</h1>
-      <img src={IconTheme} alt="theme-changer" />
+      {currentTheme === "light" ? (
+        <img onClick={handleTheme} src={IconMoon} alt="theme-changer" />
+      ) : (
+        <img onClick={handleTheme} src={IconSun} alt="theme-changer" />
+      )}
     </HeaderWrapper>
   );
 }

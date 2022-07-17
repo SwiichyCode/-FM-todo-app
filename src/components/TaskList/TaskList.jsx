@@ -23,6 +23,18 @@ export default function TaskList({ tasks, setTasks }) {
     );
   };
 
+  // DND Handler
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(tasks);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setTasks(items);
+  };
+
+  // Filter List
   let filtred = [...tasks];
 
   switch (filter) {
@@ -38,16 +50,6 @@ export default function TaskList({ tasks, setTasks }) {
     default:
       filtred = [...tasks];
       break;
-  }
-
-  function handleOnDragEnd(result) {
-    if (!result.destination) return;
-
-    const items = Array.from(tasks);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    setTasks(items);
   }
 
   return (

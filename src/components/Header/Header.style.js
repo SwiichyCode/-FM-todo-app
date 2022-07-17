@@ -11,6 +11,10 @@ export const HeaderWrapper = styled.header`
   padding-bottom: 40px;
   color: #fff;
 
+  @media screen and (max-width: 530px) {
+    padding-top: 48px;
+  }
+
   h1 {
     font-weight: 700;
     font-size: 40px;

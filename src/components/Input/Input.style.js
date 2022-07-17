@@ -4,13 +4,14 @@ export const InputWrapper = styled.div`
   width: 100%;
   max-width: 540px;
   height: 64px;
-  background: #fff;
+  background-color: ${({ theme }) => theme.colors.component};
   margin-bottom: 24px;
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   border-radius: 5px;
 
   @media screen and (max-width: 530px) {
     height: 48px;
+    margin-bottom: 16px;
   }
 
   .form {
@@ -23,7 +24,7 @@ export const InputWrapper = styled.div`
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      border: 1px solid #e3e4f1;
+      border: ${({ theme }) => `1px solid ${theme.colors.borderList}`};
       box-sizing: border-box;
       margin-left: 20px;
       margin-right: 24px;
@@ -43,7 +44,7 @@ export const InputWrapper = styled.div`
       font-size: 18px;
       line-height: 18px;
       letter-spacing: -0.25px;
-      color: #393a4b;
+      color: ${({ theme }) => theme.colors.text};
       background: transparent;
       padding: 0;
 
@@ -56,7 +57,7 @@ export const InputWrapper = styled.div`
       }
 
       &::placeholder {
-        color: #9495a5;
+        color: ${({ theme }) => theme.colors.placeholder};
       }
     }
   }

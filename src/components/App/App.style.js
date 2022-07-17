@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BgApp from "../../assets/bg-desktop-dark.jpg";
+import BgAppDesktop from "../../assets/bg-desktop-dark.jpg";
 
 export const AppWrapper = styled.div`
   width: 100%;
@@ -20,11 +20,13 @@ export const Container = styled.div`
   width: 100%;
   max-width: 1440px;
   height: 100vh;
-  background-image: url(${BgApp});
+  background-image: url(${BgAppDesktop});
   background-repeat: no-repeat;
   background-position: top center;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.background};
   padding: 0 24px 0 26px;
+  box-sizing: border-box;
+  transition: all 200ms ease-in-out;
 
   .dnd-message {
     font-weight: 400;
