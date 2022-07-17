@@ -41,7 +41,7 @@ export default function TaskList({ tasks, setTasks }) {
 
   return (
     <TaskListWrapper>
-      {filtred.map(({ task, isCompleted, id }) => (
+      {filtred.map(({ task, isCompleted, id }, index) => (
         <>
           <TaskItem
             task={task}

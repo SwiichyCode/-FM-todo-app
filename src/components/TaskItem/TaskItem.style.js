@@ -16,6 +16,11 @@ export const TaskItemWrapper = styled.li`
   border-bottom: 1px solid #e3e4f1;
   transition: all 200ms ease-in-out;
 
+  @media screen and (max-width: 530px) {
+    padding: 16px 20px 16px 20px;
+    font-size: 12px;
+  }
+
   .content-li {
     display: flex;
     align-items: center;
@@ -36,9 +41,20 @@ export const TaskItemWrapper = styled.li`
         : "#fff"};
     border-radius: 50%;
     margin-right: 24px;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 530px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   img {
     cursor: pointer;
+
+    @media screen and (max-width: 530px) {
+      width: 12px;
+      heigth: 12px;
+    }
   }
 `;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { InputWrapper } from "./Input.style";
 import { v4 as uuidv4 } from "uuid";
+
+import { InputWrapper } from "./Input.style";
 
 export default function Input({ tasks, setTasks }) {
   const [value, setValue] = useState("");

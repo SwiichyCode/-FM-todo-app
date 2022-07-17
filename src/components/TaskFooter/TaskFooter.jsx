@@ -1,6 +1,6 @@
 import React from "react";
 import { TaskFooterWrapper } from "./TaskFooter.style";
-
+import TaskFooterFilter from "../TaskFooterFilter/TaskFooterFilter";
 export default function TaskListFooter({
   tasks,
   filtred,
@@ -20,29 +20,7 @@ export default function TaskListFooter({
   return (
     <TaskFooterWrapper>
       <span className="task-counter">{filtred.length} items left</span>
-      <div className="task-filter">
-        <button
-          data-filter="all"
-          onClick={filterTask}
-          className={filter === "all" ? "active" : ""}
-        >
-          All
-        </button>
-        <button
-          data-filter="uncompleted"
-          onClick={filterTask}
-          className={filter === "uncompleted" ? "active" : ""}
-        >
-          Active
-        </button>
-        <button
-          data-filter="completed"
-          onClick={filterTask}
-          className={filter === "completed" ? "active" : ""}
-        >
-          Completed
-        </button>
-      </div>
+      <TaskFooterFilter filter={filter} filterTask={filterTask} />
       <button
         className="task-clear"
         onClick={() => handleDeleteComplete(tasks.id)}

@@ -1,5 +1,6 @@
 import React from "react";
 import { TaskItemWrapper } from "./TaskItem.style";
+
 import IconCheck from "../../assets/icon-check.svg";
 import IconDelete from "../../assets/icon-cross.svg";
 

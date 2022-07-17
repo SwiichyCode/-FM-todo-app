@@ -9,6 +9,10 @@ export const InputWrapper = styled.div`
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   border-radius: 5px;
 
+  @media screen and (max-width: 530px) {
+    height: 48px;
+  }
+
   .form {
     height: 100%;
     display: flex;
@@ -23,6 +27,11 @@ export const InputWrapper = styled.div`
       box-sizing: border-box;
       margin-left: 20px;
       margin-right: 24px;
+
+      @media screen and (max-width: 530px) {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     input {
@@ -37,6 +46,10 @@ export const InputWrapper = styled.div`
       color: #393a4b;
       background: transparent;
       padding: 0;
+
+      @media screen and (max-width: 530px) {
+        font-size: 12px;
+      }
 
       &:focus {
         outline: none;

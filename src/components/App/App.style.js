@@ -7,6 +7,10 @@ export const AppWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 530px) {
+    height: auto;
+  }
 `;
 
 export const Container = styled.div`
@@ -20,4 +24,19 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-position: top center;
   background-color: #fff;
+  padding: 0 24px 0 26px;
+
+  .dnd-message {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: -0.194444px;
+    color: #9495a5;
+    margin-top: 49px;
+
+    @media screen and (max-width: 530px) {
+      margin-top: 104px;
+    }
+  }
 `;

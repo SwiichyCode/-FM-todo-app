@@ -1,18 +1,14 @@
 import React from "react";
+import { initialValue } from "../../data/Tasks";
+import { AppWrapper, Container } from "./App.style";
 import useLocalStorage from "../../hooks/useLocalStorage";
+
 import Header from "../Header/Header";
 import Input from "../Input/Input";
 import TaskList from "../TaskList/TaskList";
-import { AppWrapper, Container } from "./App.style";
 
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage("tasks", [
-    {
-      task: "Complete online JavaScript course",
-      isCompleted: true,
-      id: "bf4c6f52-90d5-41ce-8dd1-d7a2dbcf9d46",
-    },
-  ]);
+  const [tasks, setTasks] = useLocalStorage("tasks", initialValue);
 
   return (
     <AppWrapper>
@@ -20,6 +16,7 @@ export default function App() {
         <Header />
         <Input tasks={tasks} setTasks={setTasks} />
         <TaskList tasks={tasks} setTasks={setTasks} />
+        <span className="dnd-message">Drag and drop to reorder list</span>
       </Container>
     </AppWrapper>
   );

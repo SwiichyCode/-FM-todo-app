@@ -17,5 +17,18 @@ export const HeaderWrapper = styled.header`
     line-height: 40px;
     letter-spacing: 15px;
     text-transform: uppercase;
+
+    @media screen and (max-width: 530px) {
+      font-size: 22px;
+    }
+  }
+
+  img {
+    cursor: pointer;
+
+    @media screen and (max-width: 530px) {
+      width: 19.32px;
+      height: 20px;
+    }
   }
 `;
