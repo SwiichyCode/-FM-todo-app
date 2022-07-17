@@ -15,7 +15,7 @@ export const ThemePreferenceContext = createContext();
 
 export default function App() {
   const [tasks, setTasks] = useLocalStorage("tasks", initialValue);
-  const [currentTheme, setCurrentTheme] = useLocalStorage("theme", "light");
+  const [currentTheme, setCurrentTheme] = useLocalStorage("theme", "dark");
   const theme = { colors: themesMap[currentTheme] };
 
   return (
