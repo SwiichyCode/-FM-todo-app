@@ -3,6 +3,7 @@ import { TaskListWrapper } from "./TaskList.style";
 
 import TaskListFooter from "../TaskFooter/TaskFooter";
 import TaskItem from "../TaskItem/TaskItem";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export default function TaskList({ tasks, setTasks }) {
   const [filter, setFilter] = useState("all");
@@ -39,26 +40,52 @@ export default function TaskList({ tasks, setTasks }) {
       break;
   }
 
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+
+    const items = Array.from(tasks);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setTasks(items);
+  }
+
   return (
-    <TaskListWrapper>
-      {filtred.map(({ task, isCompleted, id }, index) => (
-        <>
-          <TaskItem
-            task={task}
-            isCompleted={isCompleted}
-            id={id}
-            handleCompleted={handleCompleted}
-            handleDelete={handleDelete}
-          />
-        </>
-      ))}
-      <TaskListFooter
-        tasks={tasks}
-        filtred={filtred}
-        setTasks={setTasks}
-        filter={filter}
-        setFilter={setFilter}
-      />
-    </TaskListWrapper>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="characters">
+        {(provided) => (
+          <TaskListWrapper
+            className="characters"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {filtred.map(({ task, isCompleted, id }, index) => {
+              return (
+                <Draggable key={id} draggableId={id} index={index}>
+                  {(provided) => (
+                    <TaskItem
+                      task={task}
+                      isCompleted={isCompleted}
+                      id={id}
+                      handleCompleted={handleCompleted}
+                      handleDelete={handleDelete}
+                      provided={provided}
+                    />
+                  )}
+                </Draggable>
+              );
+            })}
+            {provided.placeholder}
+            <TaskListFooter
+              tasks={tasks}
+              filtred={filtred}
+              setTasks={setTasks}
+              filter={filter}
+              setFilter={setFilter}
+            />
+          </TaskListWrapper>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }

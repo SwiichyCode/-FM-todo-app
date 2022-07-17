@@ -14,7 +14,7 @@ export const TaskItemWrapper = styled.li`
   padding: 20px 24px 19px 24px;
   box-sizing: border-box;
   border-bottom: 1px solid #e3e4f1;
-  transition: all 200ms ease-in-out;
+  /* transition: all 200ms ease-in-out; */
 
   @media screen and (max-width: 530px) {
     padding: 16px 20px 16px 20px;

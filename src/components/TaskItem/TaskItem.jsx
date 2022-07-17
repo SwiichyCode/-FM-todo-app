@@ -10,9 +10,16 @@ export default function TaskItem({
   id,
   handleCompleted,
   handleDelete,
+  provided,
 }) {
   return (
-    <TaskItemWrapper isCompleted={isCompleted} key={id}>
+    <TaskItemWrapper
+      isCompleted={isCompleted}
+      key={id}
+      ref={provided.innerRef}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+    >
       <div className="content-li">
         <div className="completed" onClick={() => handleCompleted(id)}>
           {isCompleted ? <img src={IconCheck} alt="icon-check" /> : null}
