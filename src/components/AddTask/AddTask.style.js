@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InputWrapper = styled.div`
+export const FormWrapper = styled.form`
   width: 100%;
   max-width: 540px;
   height: 64px;
@@ -15,6 +15,7 @@ export const InputWrapper = styled.div`
   }
 
   .form {
+    position: relative;
     height: 100%;
     display: flex;
     align-items: center;
@@ -59,6 +60,20 @@ export const InputWrapper = styled.div`
       &::placeholder {
         color: ${({ theme }) => theme.colors.placeholder};
       }
+    }
+
+    .error {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: red;
+    }
+
+    .success {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: green;
     }
   }
 `;

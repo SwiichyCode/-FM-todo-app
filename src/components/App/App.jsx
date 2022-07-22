@@ -5,7 +5,7 @@ import { AppWrapper, Container } from "./App.style";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 import Header from "../Header/Header";
-import Input from "../Input/Input";
+import AddTask from "../AddTask/AddTask";
 import TaskList from "../TaskList/TaskList";
 
 import { light, dark } from "../../theme/schema";
@@ -14,7 +14,10 @@ const themesMap = { light, dark };
 export const ThemePreferenceContext = createContext();
 
 export default function App() {
+  // State
   const [tasks, setTasks] = useLocalStorage("tasks", initialValue);
+
+  // Theme
   const [currentTheme, setCurrentTheme] = useLocalStorage("theme", "dark");
   const theme = { colors: themesMap[currentTheme] };
 
@@ -27,7 +30,7 @@ export default function App() {
               currentTheme={currentTheme}
               setCurrentTheme={setCurrentTheme}
             />
-            <Input tasks={tasks} setTasks={setTasks} />
+            <AddTask tasks={tasks} setTasks={setTasks} />
             <TaskList tasks={tasks} setTasks={setTasks} />
             <span className="dnd-message">Drag and drop to reorder list</span>
           </Container>

@@ -1,17 +1,17 @@
 export const initialValue = [
   {
-    task: "Complete online JavaScript course",
-    isCompleted: true,
     id: "bf4c6f52-90d5-41ce-8dd1-d7a2dbcf9d46",
+    isCompleted: true,
+    task: "Complete online JavaScript course",
   },
   {
-    task: "Follow me on twitter ! @PeaceAndLoV_",
-    isCompleted: false,
     id: "bf4c6f52-90d5-41ce-8dd1-d7a2dbcf9d47",
+    isCompleted: false,
+    task: "Follow me on twitter ! @PeaceAndLoV_",
   },
   {
-    task: "Tell me what you think of the project",
-    isCompleted: false,
     id: "bf4c6f52-90d5-41ce-8dd1-d7a2dbcf9d48",
+    isCompleted: false,
+    task: "Tell me what you think of the project",
   },
 ];
