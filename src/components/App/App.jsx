@@ -5,8 +5,8 @@ import { AppWrapper, Container } from "./App.style";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 import Header from "../Header/Header";
-import AddTask from "../AddTask/AddTask";
-import TaskList from "../TaskList/TaskList";
+import AddTask from "../Task/AddTask/AddTask";
+import TaskList from "../Task/TaskList/TaskList";
 
 import { light, dark } from "../../theme/schema";
 

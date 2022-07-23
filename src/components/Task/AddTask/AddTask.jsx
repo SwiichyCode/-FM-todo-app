@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 import { FormWrapper } from "./AddTask.style";
 
 export default function AddTask({ tasks, setTasks }) {
+  const [value, setValue] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const [value, setValue] = useState("");
 
   const handleChange = (e) => {
     setSuccess(false);

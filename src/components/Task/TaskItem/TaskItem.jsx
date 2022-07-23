@@ -3,12 +3,13 @@ import { MdClose } from "react-icons/md";
 import { IconContext } from "react-icons";
 
 import { TaskItemWrapper } from "./TaskItem.style";
-import IconCheck from "../../assets/icon-check.svg";
+import IconCheck from "../../../assets/icon-check.svg";
 
 export default function TaskItem({
   task,
   isCompleted,
   id,
+  isDeleted,
   handleCompleted,
   handleDelete,
   provided,
@@ -36,6 +37,8 @@ export default function TaskItem({
         ) : (
           <span>{task}</span>
         )}
+        {/* [Error popup] */}
+        {isDeleted ? "yes" : null}
       </div>
       <IconContext.Provider value={{ size: "1.6em", className: "close" }}>
         <MdClose onClick={() => handleDelete(id)} />

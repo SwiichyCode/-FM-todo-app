@@ -23,6 +23,7 @@ export const TaskItemWrapper = styled.li`
   }
 
   .content-li {
+    position: relative;
     display: flex;
     align-items: center;
   }
@@ -59,6 +60,13 @@ export const TaskItemWrapper = styled.li`
       width: 20px;
       height: 20px;
     }
+  }
+
+  .deleted {
+    position: absolute;
+    top: 50%;
+    right: -120px;
+    transform: translateY(-50%);
   }
 
   img {

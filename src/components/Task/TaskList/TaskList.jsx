@@ -9,7 +9,17 @@ export default function TaskList({ tasks, setTasks }) {
   const [filter, setFilter] = useState("all");
 
   const handleDelete = (id) => {
-    setTasks(tasks.filter((item) => item.id !== id));
+    setTasks(
+      tasks.map((item) => {
+        if (item.id === id) {
+          return { ...item, isDeleted: !item.isDeleted };
+        }
+        return item;
+      })
+    );
+    setTimeout(() => {
+      setTasks(tasks.filter((item) => item.id !== id));
+    }, 3000);
   };
 
   const handleCompleted = (id) => {
@@ -61,20 +71,23 @@ export default function TaskList({ tasks, setTasks }) {
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            {filtred.map(({ task, isCompleted, id }, index) => {
+            {filtred.map(({ task, isCompleted, id, isDeleted }, index) => {
               return (
-                <Draggable key={id} draggableId={id} index={index}>
-                  {(provided) => (
-                    <TaskItem
-                      task={task}
-                      isCompleted={isCompleted}
-                      id={id}
-                      handleCompleted={handleCompleted}
-                      handleDelete={handleDelete}
-                      provided={provided}
-                    />
-                  )}
-                </Draggable>
+                <>
+                  <Draggable key={id} draggableId={id} index={index}>
+                    {(provided) => (
+                      <TaskItem
+                        task={task}
+                        isCompleted={isCompleted}
+                        id={id}
+                        isDeleted={isDeleted}
+                        handleCompleted={handleCompleted}
+                        handleDelete={handleDelete}
+                        provided={provided}
+                      />
+                    )}
+                  </Draggable>
+                </>
               );
             })}
             {provided.placeholder}
