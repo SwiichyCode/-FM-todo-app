@@ -9,6 +9,7 @@ import AddTask from "../Task/AddTask/AddTask";
 import TaskList from "../Task/TaskList/TaskList";
 
 import { light, dark } from "../../theme/schema";
+import TaskInformation from "../Task/TaskInformation/TaskInformation";
 
 const themesMap = { light, dark };
 export const ThemePreferenceContext = createContext();
@@ -32,7 +33,7 @@ export default function App() {
             />
             <AddTask tasks={tasks} setTasks={setTasks} />
             <TaskList tasks={tasks} setTasks={setTasks} />
-            <span className="dnd-message">Drag and drop to reorder list</span>
+            <TaskInformation />
           </Container>
         </AppWrapper>
       </ThemeProvider>

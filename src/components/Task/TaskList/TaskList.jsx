@@ -7,6 +7,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export default function TaskList({ tasks, setTasks }) {
   const [filter, setFilter] = useState("all");
+  const [newValue, setNewValue] = useState("");
   const [deletation, setDeletation] = useState(false);
 
   const handleDelete = (id) => {
@@ -31,6 +32,17 @@ export default function TaskList({ tasks, setTasks }) {
       tasks.map((item) => {
         if (item.id === id) {
           return { ...item, isCompleted: !item.isCompleted };
+        }
+        return item;
+      })
+    );
+  };
+
+  const handleEdit = (id) => {
+    setTasks(
+      tasks.map((item) => {
+        if (item.id === id) {
+          return { ...item, task: newValue };
         }
         return item;
       })
@@ -82,12 +94,14 @@ export default function TaskList({ tasks, setTasks }) {
                     {(provided) => (
                       <TaskItem
                         task={task}
+                        setNewValue={setNewValue}
                         isCompleted={isCompleted}
                         id={id}
                         isDeleted={isDeleted}
                         deletation={deletation}
                         handleCompleted={handleCompleted}
                         handleDelete={handleDelete}
+                        handleEdit={handleEdit}
                         provided={provided}
                       />
                     )}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FormWrapper = styled.form`
   width: 100%;
   max-width: 540px;
-  height: 64px;
+  height: auto;
   background-color: ${({ theme }) => theme.colors.component};
   margin-bottom: 24px;
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
@@ -16,7 +16,7 @@ export const FormWrapper = styled.form`
 
   .form {
     position: relative;
-    height: 100%;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: flex-start;

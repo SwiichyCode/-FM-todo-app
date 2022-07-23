@@ -8,12 +8,14 @@ import TaskDeleted from "../TaskDeleted/TaskDeleted";
 
 export default function TaskItem({
   task,
+  setNewValue,
   isCompleted,
   id,
   isDeleted,
   deletation,
   handleCompleted,
   handleDelete,
+  handleEdit,
   provided,
 }) {
   const [editing, setEditing] = useState(false);
@@ -36,7 +38,20 @@ export default function TaskItem({
           {isCompleted ? <img src={IconCheck} alt="icon-check" /> : null}
         </div>
         {editing ? (
-          <input type={"text"} placeholder="Enter new value" />
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+
+              handleEdit(id);
+              setEditing(false);
+            }}
+          >
+            <input
+              type={"text"}
+              placeholder="Enter new value"
+              onChange={(e) => setNewValue(e.target.value)}
+            />
+          </form>
         ) : (
           <span className={isDeleted ? "task-animation" : null}>{task}</span>
         )}
@@ -44,6 +59,7 @@ export default function TaskItem({
       <IconContext.Provider value={{ size: "1.6em", className: "close" }}>
         <MdClose onClick={deletation ? null : () => handleDelete(id)} />
       </IconContext.Provider>
+
       {/* [Error popup] */}
       {isDeleted ? <TaskDeleted /> : null}
     </TaskItemWrapper>
