@@ -4,12 +4,14 @@ import { IconContext } from "react-icons";
 
 import { TaskItemWrapper } from "./TaskItem.style";
 import IconCheck from "../../../assets/icon-check.svg";
+import TaskDeleted from "../TaskDeleted/TaskDeleted";
 
 export default function TaskItem({
   task,
   isCompleted,
   id,
   isDeleted,
+  deletation,
   handleCompleted,
   handleDelete,
   provided,
@@ -27,6 +29,7 @@ export default function TaskItem({
       {...provided.draggableProps}
       {...provided.dragHandleProps}
       onClick={handleDoubleClick}
+      deletation={deletation}
     >
       <div className="content-li">
         <div className="completed" onClick={() => handleCompleted(id)}>
@@ -35,14 +38,14 @@ export default function TaskItem({
         {editing ? (
           <input type={"text"} placeholder="Enter new value" />
         ) : (
-          <span>{task}</span>
+          <span className={isDeleted ? "task-animation" : null}>{task}</span>
         )}
-        {/* [Error popup] */}
-        {isDeleted ? "yes" : null}
       </div>
       <IconContext.Provider value={{ size: "1.6em", className: "close" }}>
-        <MdClose onClick={() => handleDelete(id)} />
+        <MdClose onClick={deletation ? null : () => handleDelete(id)} />
       </IconContext.Provider>
+      {/* [Error popup] */}
+      {isDeleted ? <TaskDeleted /> : null}
     </TaskItemWrapper>
   );
 }

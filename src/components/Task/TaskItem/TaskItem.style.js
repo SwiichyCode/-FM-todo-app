@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TaskItemWrapper = styled.li`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +27,11 @@ export const TaskItemWrapper = styled.li`
     position: relative;
     display: flex;
     align-items: center;
+  }
+
+  .task-animation {
+    rotate: ${({ deletation }) => (deletation ? "360deg" : "0deg")};
+    transition: all 400ms ease-in-out;
   }
 
   .close {

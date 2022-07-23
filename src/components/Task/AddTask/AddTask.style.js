@@ -66,14 +66,14 @@ export const FormWrapper = styled.form`
       position: absolute;
       top: 10px;
       right: 10px;
-      color: red;
+      color: #fc4747;
     }
 
     .success {
       position: absolute;
       top: 10px;
       right: 10px;
-      color: green;
+      color: #767992;
     }
   }
 `;
