@@ -5,7 +5,7 @@ export const FormWrapper = styled.form`
   max-width: 540px;
   height: auto;
   background-color: ${({ theme }) => theme.colors.component};
-  margin-bottom: 24px;
+  margin-bottom: ${({ edit }) => (edit ? "0" : "24px")};
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   border-radius: 5px;
 
@@ -20,6 +20,8 @@ export const FormWrapper = styled.form`
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding: 0 24px;
+    box-sizing: border-box;
 
     .circle {
       width: 24px;
@@ -27,7 +29,6 @@ export const FormWrapper = styled.form`
       border-radius: 50%;
       border: ${({ theme }) => `1px solid ${theme.colors.borderList}`};
       box-sizing: border-box;
-      margin-left: 20px;
       margin-right: 24px;
 
       @media screen and (max-width: 530px) {
@@ -37,7 +38,7 @@ export const FormWrapper = styled.form`
     }
 
     input {
-      width: 100%;
+      width: 70%;
       max-width: 414px;
       height: 24px;
       border: none;
@@ -60,6 +61,11 @@ export const FormWrapper = styled.form`
       &::placeholder {
         color: ${({ theme }) => theme.colors.placeholder};
       }
+    }
+
+    .content-btn {
+      display: flex;
+      gap: 1em;
     }
 
     .error {

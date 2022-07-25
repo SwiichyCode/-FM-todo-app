@@ -2,13 +2,13 @@ import React from "react";
 import { TaskFooterWrapper } from "./TaskFooter.style";
 import TaskFooterFilter from "../TaskFooterFilter/TaskFooterFilter";
 export default function TaskListFooter({
-  tasks,
-  filtred,
+  todos,
+  filtredTodos,
   setTasks,
   filter,
   setFilter,
 }) {
-  const uncompletedTask = tasks.filter((item) => !item.isCompleted);
+  const uncompletedTask = todos.filter((item) => !item.isCompleted);
   const handleDeleteComplete = (id) => {
     setTasks(uncompletedTask.filter((item) => item.id !== id));
   };
@@ -19,11 +19,11 @@ export default function TaskListFooter({
 
   return (
     <TaskFooterWrapper>
-      <span className="task-counter">{filtred.length} items left</span>
+      <span className="task-counter">{filtredTodos.length} items left</span>
       <TaskFooterFilter filter={filter} filterTask={filterTask} />
       <button
         className="task-clear"
-        onClick={() => handleDeleteComplete(tasks.id)}
+        onClick={() => handleDeleteComplete(todos.id)}
       >
         Clear Completed
       </button>

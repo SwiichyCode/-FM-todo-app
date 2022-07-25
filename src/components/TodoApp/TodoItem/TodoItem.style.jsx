@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TaskItemWrapper = styled.li`
+export const TodoItemWrapper = styled.li`
   position: relative;
   display: flex;
   align-items: center;
@@ -16,7 +16,10 @@ export const TaskItemWrapper = styled.li`
   padding: 20px 24px 19px 24px;
   box-sizing: border-box;
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.borderList}`};
-  /* transition: all 200ms ease-in-out; */
+
+  &:last-child {
+    border-bottom: initial;
+  }
 
   @media screen and (max-width: 530px) {
     padding: 16px 20px 16px 20px;
@@ -27,6 +30,13 @@ export const TaskItemWrapper = styled.li`
     position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
+  }
+
+  .content-icon {
+    display: flex;
+    align-items: center;
+    gap: 1em;
   }
 
   .task-animation {
@@ -81,6 +91,28 @@ export const TaskItemWrapper = styled.li`
     @media screen and (max-width: 530px) {
       width: 12px;
       heigth: 12px;
+    }
+  }
+
+  @keyframes toBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(-68.8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes toTop {
+    0% {
+      opacity: 0;
+      transform: translateY(68.8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header`
+export const TodoHeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TaskInformationWrapper = styled.ul`
+export const TodoFooterWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   margin-top: 49px;
